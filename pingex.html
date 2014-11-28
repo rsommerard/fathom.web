@@ -1,13 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- 
-       TMA PhD School 2014
-       Lab: network measurements from the browser
-       Author: Anna-Kaisa Pietilainen <anna-kaisa.pietilainen@inria.fr> 
-  -->
   <meta charset="utf-8">
-  <title>Example 2</title>
+  <title>Fathom Ping Example</title>
   <style>
   body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -17,10 +12,10 @@
     color:#c0c0c0;
   }
   </style>
-  <script src="../scripts/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
 </head>
 <body>
-<h1>Example 2 : System ping with Fathom</h1>
+<h1>Fathom Ping example</h1>
 
 <p>This example uses fathom to call the system ping command.</p>
 
@@ -30,7 +25,8 @@
 </p>
 
 <p>
-  <b>Destination </b><input type="text" name="dst" id="dst"></input>
+  <b>Destination </b>
+  <input type="text" name="dst" id="dst"></input>
   <button id="ping">Ping</button>
 </p>
 
@@ -61,7 +57,7 @@ $('#init').click(function() {
     	init = true;
     	$('#initmark').css("color","green");
     	$('#initmark').html(checkmark); 
-    }, manifest, window);
+    }, manifest);
 });
 
 $('#ping').click(function() {
