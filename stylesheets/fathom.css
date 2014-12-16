@@ -71,6 +71,14 @@
     padding-bottom: 5px;
 }
 
+.highlight {
+    background-color: #E6E6EC;
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: #0A0545;
+    padding: 5px;
+}
+
 .pure-button {
     background-color: #0A0545;
     color: white;
@@ -131,6 +139,13 @@
     margin-top: 20px;
     text-align: right;
 }
+
+.small {
+    font-size: 75%;
+}
+
+a, a:visited { color: #0A0545; text-decoration: underline; outline: 0; }
+p a, p a:visited { line-height: inherit; }
 
 .header {
      margin: 0;
