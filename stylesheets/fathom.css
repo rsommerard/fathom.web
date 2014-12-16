@@ -78,6 +78,10 @@
     text-transform: uppercase;
 }
 
+.pure-button-active {
+    background-color: #FFB515;
+}
+
 .button-xsmall {
     font-size: 70%;
 }
@@ -114,12 +118,18 @@
     margin: 0 auto;
     padding: 0 2em;
     max-width: 800px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     line-height: 1.6em;
 }
 
 .center {
+    margin-top: 20px;
     text-align: center;
+}
+
+.right {
+    margin-top: 20px;
+    text-align: right;
 }
 
 .header {
@@ -134,9 +144,10 @@
     font-size: 3em;
     font-weight: 300;
 }
+
 .header h2 {
     font-weight: 300;
-    color: #ccc;
+    color: #888;
     padding: 0;
     margin-top: 0;
 }
