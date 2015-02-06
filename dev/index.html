@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fathom for Developers</title>
+
+  <link rel="icon" type="image/png" id="favicon" href="../icons/icon-16.png"/>
+  
+  <link href="../stylesheets/pure-min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/grids-responsive-min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/fathom.css" type="text/css" rel="stylesheet">
+  </head>
+  
+  <body>
+    <div id="container">
+
+        <div id="main">
+	  <div class="header">
+            <h1><img src="../icons/icon-64.png">&nbsp;Fathom for Developers</h1>
+            <h2>Network performance monitoring and measurements in the browser</h2>
+          </div>
+	</div>
+
+	<div class="content">
+	  <h2 class="content-subhead">Getting Started</h2>
+
+	  <p>The Fathom extension adds a <code>window.fathom</code> element to each web page that lets you access the Fathom API. For security reasons, the API access requires user validation everytime the script is run.
+
+	  <p><strong>Step 1</strong> Initially, the Fathom object contains only a single <code>window.fathom.init</code> method for initializing the Fathom API with <i>the page manifest</i>. The manifest must list all the APIs and network destinations used by your script. A simple example is shown below (the <code>api</code> and <code>destinations</code> keys are required):
+
+<pre class="highlight">
+  var manifest = {
+    'api' : [
+      'system.*',
+    ],
+    'destinations' : ['www.google.com']
+  };
+</pre>
+
+	  <p><strong>Step 2</strong> Call the <code>fathom.init</code> method passing the page manifest and a callback as arguments as shown below:
+
+<pre class="highlight">
+  fathom.init(function(res) {
+    if (res.error)
+      throw "init failed: " + res.error;
+  }, manifest);
+</pre>
+
+	  <p><strong>Step 3</strong> The Fathom extension parses and validates the manifest, and shows a security dialog (see image below) to the user asking him to allow or deny access. Your script receives the answer via the provided callback. If the user accepts the manifest, the requested methods are made available via the Fathom object.
+
+	  <p><strong>Step 4</strong> You are now ready to use the Fathom API! Check the <a href="../api/index.html">Fathom API documentation</a> for available methods. The network destination checks are made upon iniatializing connections (either sockets or tools that require network access) and the destinations must match the ones listed in the manifest. More complex examples in the next section.
+
+	  <pre class="highlight">
+  fathom.system.doPing(function(res) {
+    if (res.error)
+      throw "ping failed: " + res.error;
+    console.log(res);
+  }, "www.google.com", {count : 5});
+	  </pre>
+
+	  <h2 class="content-subhead">More Examples</h2>
+
+	  <h2 class="content-subhead">Develop Fathom</h2>
+
+	  <p>Fathom is open sourced with MIT licence and available on <a href="https://github.com/inria-muse/fathom.addon">Github</a>!</p>
+
+	  <h2 class="content-subhead">Contacts</h2>
+
+	  <p>
+	    If you have any questions or suggestions about Fathom, do not hesitate to <a href="mailto:muse.fathom_AT_inria.fr">contact us</a>!
+	  </p>
+
+	  <p>
+	    <i class="small">&copy; 2014-2015 Inria Paris-Rocquencourt, ICSI</i>
+	  </p>
+	</div>
+    </div>
+  </body>
+</html>

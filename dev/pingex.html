@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fathom Ping Example</title>
+  <style>
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }  
+  pre  {
+    background-color:black;
+    color:#c0c0c0;
+  }
+  </style>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+</head>
+<body>
+<h1>Fathom Ping example</h1>
+
+<p>This example uses fathom to call the system ping command.</p>
+
+<p>
+<button id="init">Init Fathom</button>
+    &nbsp;<span id="initmark"></span>
+</p>
+
+<p>
+  <b>Destination </b>
+  <input type="text" name="dst" id="dst"></input>
+  <button id="ping">Ping</button>
+</p>
+
+<h3>Results</h3>
+
+<div id="res"/>
+
+<!-- main script -->
+<script>  
+var fathom = window.fathom;
+var manifest = {
+    'api' : [
+	'system.*',
+    ],
+    'destinations' : [] // for socket operations
+};
+
+var checkmark = "&#x2714";
+var ballotmark = " &#x2718;";
+$('#initmark').css("color","red");
+$('#initmark').html(ballotmark); 
+var init = false;
+
+$('#init').click(function() {
+    fathom.init(function(res) {
+    	if (res.error)
+    	    throw "init failed: " + res.error;
+    	init = true;
+    	$('#initmark').css("color","green");
+    	$('#initmark').html(checkmark); 
+    }, manifest);
+});
+
+$('#ping').click(function() {
+    if (!init)
+        return;
+
+    var dst = $('#dst').val();
+    if (dst.length<=0)
+	throw "Invalid destination"
+    
+    fathom.system.doPing(function(res) {
+	$('#res').html("<pre><code>"+
+  	  	       JSON.stringify(res,null,4)+
+		       "</code></pre>");	  
+    }, dst, {count : 5});
+});
+</script>
+</body>	
+</html>
