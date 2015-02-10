@@ -30,28 +30,26 @@
 
 	  <p>The Fathom extension adds a <code>window.fathom</code> element to each web page that lets you access the Fathom API. For security reasons, the API access requires user validation everytime the script is run.</p>
 
-	  <p><strong>Step 1</strong> Initially, the Fathom object contains only a single <code>window.fathom.init</code> method for initializing the Fathom API with <i>the page manifest</i>. The manifest must list all the APIs and network destinations used by your script. A simple example is shown below (the <code>appname</code>, <code>appdesc</code>, <code>api</code> and <code>destinations</code> keys are required):</p>
+	  <p><strong>Step 1</strong> Initially, the Fathom object contains only a single <code>window.fathom.init</code> method for initializing the Fathom API with <i>the page manifest</i>. The manifest must list all the APIs and network destinations used by your script. A simple example is shown below (the <code>api</code> and <code>destinations</code> keys are required, <code>description</code> is optional):</p>
 
-<pre class="highlight">
+	  <pre class="highlight">
   var manifest = {
-    'appname' : 'Fathom Demo App',
-    'appdesc' : 'Demostrating Fathom for web pages.',
-    'homepage' : 'https://muse.inria.fr/fathom/dev', // optional
+    'description' : 'Demo of Fathom for web pages.',
     'api' : [
       'system.*',
     ],
     'destinations' : ['www.google.com']
   };
-</pre>
+	  </pre>
 
 	  <p><strong>Step 2</strong> Call the <code>fathom.init</code> method passing the page manifest and a callback as arguments as shown below:</p>
 
-<pre class="highlight">
+	  <pre class="highlight">
   fathom.init(function(res) {
     if (res.error)
       throw "init failed: " + res.error;
   }, manifest);
-</pre>
+	  </pre>
 
 	  <p><strong>Step 3</strong> The Fathom extension parses and validates the manifest, and shows a security dialog (see image below) to the user asking him to allow or deny access. Your script receives the answer via the provided callback. If the user accepts the manifest, the requested methods are made available via the Fathom object.</p>
 
@@ -67,15 +65,17 @@
 
 	  <h2 class="content-subhead">More Examples</h2>
 
+	  <ul>
+	    <li><a href="pingex.html">Fathom Ping Example</a></li>
+	  </ul>
+
 	  <h2 class="content-subhead">Develop Fathom</h2>
 
-	  <p>Fathom is open sourced with MIT licence and available on <a href="https://github.com/inria-muse/fathom.addon">Github</a>!</p>
+	  <p>Fathom is open sourced with MIT licence and available on <a href="https://github.com/inria-muse/fathom.addon">Github</a>.</p>
 
 	  <h2 class="content-subhead">Contacts</h2>
 
-	  <p>
-	    If you have any questions or suggestions about Fathom, do not hesitate to <a href="mailto:muse.fathom_AT_inria.fr">contact us</a>!
-	  </p>
+	  <p>If you have any questions or suggestions about Fathom, do not hesitate to <a href="mailto:muse.fathom_AT_inria.fr">contact us</a>!</p>
 
 	  <p>
 	    <i class="small">&copy; 2014-2015 Inria Paris-Rocquencourt, ICSI</i>
