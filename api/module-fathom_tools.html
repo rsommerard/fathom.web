@@ -88,7 +88,7 @@ and other misc utility functions.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1369">line 1369</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1374">line 1374</a>
     </li></ul></dd>
     
 
@@ -147,6 +147,8 @@ and other misc utility functions.</div>
 <div class="description">
     Do full network neighbour search (uses any available
              means to discover devices in the local network).
+
+             Available only for addon pages.
 </div>
 
 
@@ -239,7 +241,7 @@ and other misc utility functions.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1502">line 1502</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1517">line 1517</a>
     </li></ul></dd>
     
 
@@ -396,7 +398,7 @@ resolved.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1462">line 1462</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1442">line 1442</a>
     </li></ul></dd>
     
 
@@ -436,7 +438,9 @@ resolved.</td>
 <div class="description">
     Get this node description (as send out in response to
              Fathom discovery queries). Static node info + current
-                active interfaces + network env.
+             active interfaces + network env.
+
+             Available only for addon pages.
 </div>
 
 
@@ -480,7 +484,7 @@ resolved.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1486">line 1486</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1494">line 1494</a>
     </li></ul></dd>
     
 
@@ -519,6 +523,8 @@ resolved.</td>
 
 <div class="description">
     Get this node current network environment.
+
+             Available only for addon pages.
 </div>
 
 
@@ -562,295 +568,7 @@ resolved.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1493">line 1493</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".iperf.start"><span class="type-signature">(static) </span>iperf.start<span class="signature">(func, args)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Start iperf.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>func</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The callback function to invoke when
-results are available.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>args</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">command line arguments, these match more or less
-the arguments (naming and values) that you can give to commandline
-iperf.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1415">line 1415</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".iperf.stop"><span class="type-signature">(static) </span>iperf.stop<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    stop running iperf server.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id returned by the start call.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1423">line 1423</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1504">line 1504</a>
     </li></ul></dd>
     
 
@@ -1007,7 +725,7 @@ receives a dictionary whose members convey the DNS response.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1449">line 1449</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1468">line 1468</a>
     </li></ul></dd>
     
 
@@ -1089,7 +807,7 @@ receives a dictionary whose members convey the DNS response.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1477">line 1477</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1483">line 1483</a>
     </li></ul></dd>
     
 
@@ -1220,7 +938,7 @@ receives a dictionary whose members convey the DNS response.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1470">line 1470</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1476">line 1476</a>
     </li></ul></dd>
     
 
@@ -1377,295 +1095,7 @@ receives a dictionary whose members convey the DNS response.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1436">line 1436</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".ping.start"><span class="type-signature">(static) </span>ping.start<span class="signature">(func, args)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Start ping.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>func</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The callback function to invoke when
-results are available.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>args</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">command line arguments, these match more or less
-the arguments (naming and values) that you can give to commandline
-ping. At minimum { client : <ip> } else runs as server.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1387">line 1387</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".ping.stop"><span class="type-signature">(static) </span>ping.stop<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    stop running ping server.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id returned by the start call.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1395">line 1395</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line1455">line 1455</a>
     </li></ul></dd>
     
 
@@ -1713,7 +1143,7 @@ ping. At minimum { client : <ip> } else runs as server.</td>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta1</a> on Fri Feb 06 2015 11:26:35 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta1</a> on Tue Feb 10 2015 14:17:20 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>

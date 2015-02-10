@@ -28,13 +28,19 @@
 
 <h3>Results</h3>
 
-<div id="res"><pre><code>> 
+<div id="res"><pre><code>
 
 </code></pre></div>
 
 <!-- main script -->
 <script>  
 var fathom = window.fathom;
+if (!fathom) {
+    $('#res').html("<pre><code>Fathom is not installed!\n\n"+
+		   "</code></pre>");	 
+    throw "Fathom is not installed"
+}
+
 $('#ping').click(function() {
     var dst = $('#dst').val();
     if (dst.length<=0)
@@ -51,7 +57,11 @@ $('#ping').click(function() {
     fathom.init(function(res) {
     	if (res.error)
     	    throw "init failed: " + res.error;
+
 	fathom.system.doPing(function(res) {
+    	    if (res.error)
+    		throw "ping failed: " + res.error;
+
 	    $('#res').html("<pre><code>"+
   	  		   JSON.stringify(res,null,4)+
 			   "</code></pre>");	  
