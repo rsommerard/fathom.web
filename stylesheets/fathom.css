@@ -127,16 +127,15 @@
     padding: 0 2em;
     max-width: 800px;
     margin-bottom: 20px;
+    margin-top: 20px;
     line-height: 1.6em;
 }
 
 .center {
-    margin-top: 20px;
     text-align: center;
 }
 
 .right {
-    margin-top: 20px;
     text-align: right;
 }
 
@@ -144,8 +143,25 @@
     font-size: 75%;
 }
 
+.upper {
+    text-transform: uppercase;
+}
+
 a, a:visited { color: #0A0545; text-decoration: underline; outline: 0; }
 p a, p a:visited { line-height: inherit; }
+
+b { color: #0A0545; }
+
+.testname {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+blockquote {
+    border-left: 2px solid #0A0545;
+    padding-left: 4px;
+    background-color: white;
+}
 
 .header {
      margin: 0;
@@ -173,6 +189,13 @@ p a, p a:visited { line-height: inherit; }
     color: #888;
 }
 
+.allow {
+    background-color: rgba(94,185,94,0.25);
+}
+.disallow {
+    background-color: rgba(221,81,76,0.25);
+}
+
 .test {
     margin-bottom: 3px;
     padding-left: 4px;
@@ -190,7 +213,7 @@ p a, p a:visited { line-height: inherit; }
 }
 
 .test-skip {
-    border-left: 4px solid rgb(243,123,29);
+    border-left: 4px solid grey;
     background-color: #f0f0f0;
 }
 
@@ -211,11 +234,43 @@ p a, p a:visited { line-height: inherit; }
 
 /* CSS Spinner */
 
+.floatright {
+    float: right;
+}
+
+fieldset.whitelistgroup  { 
+  margin: 0; 
+  margin-bottom: 20px; 
+  padding: 5px; 
+}
+
+fieldset.whitelistgroup legend { 
+  margin: 0; 
+  padding: 0; 
+  font-weight: bold; 
+  margin-left: 20px; 
+  font-size: 100%; 
+  color: black; 
+}
+
+ul.whitelist { 
+  margin: 0; 
+  padding: 0; 
+  margin-left: 20px; 
+  list-style: none; 
+}
+
+ul.whitelist li {
+  text-align: left;
+  float: left;
+  min-width: 150px;
+  display:inline-block;
+}
+
 .spinner {
-    width: 40px;
+    color: #0A0545;
     height: 15px;
     display: inline-block;
-    float: right;
     margin: 3px 3px 0 0;
 }
 
@@ -249,4 +304,80 @@ p a, p a:visited { line-height: inherit; }
   }  20% { 
     transform: scaleY(1.0);
   }
+}
+
+div .infofloat {
+    z-index: 10;
+    padding: 5px;
+    color: #000;
+    font: 12px sans-serif;
+    border-radius: 2px;       
+    pointer-events: none;
+    text-align: left;
+}
+
+svg.net-graph .canvas {
+    fill: none;
+    pointer-events: all;
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+
+svg.net-graph .edge {
+    stroke: #0A0545;
+    stroke-width: 2.5px;
+}
+
+svg.net-graph .wifi-edge {
+    stroke: #0A0545;
+    stroke-width: 2.5px;
+    stroke-dasharray: 3,3;
+}
+
+svg.net-graph .label {
+  pointer-events: none;
+  font: 16px sans-serif; 
+  fill: #000;
+}
+
+/* unknown */
+svg.net-graph .node {
+    fill: #ffffff;
+    stroke: #0A0545;
+    stroke-width: 0.5px;
+}
+
+/* localhost */
+svg.net-graph .localhost-node {
+    fill: #ff8c00;
+}
+
+/* other host */
+svg.net-graph .peer-node {
+    fill: #8a89a6;
+}
+
+/* other host, rpc available */
+svg.net-graph .rpc-peer-node {
+    fill: #a05d56;
+}
+
+/* gateway */
+svg.net-graph .gw-node {
+    fill: #7b6888;
+}
+
+/* gateway, rpc */
+svg.net-graph .rpc-gw-node {
+    fill: #6b486b;
+}
+
+/* ap */
+svg.net-graph .ap-node {
+    fill: #7b6888;
+}
+
+/* internet nodes */
+svg.net-graph .i-node {
+    fill: #d0743c;
 }
