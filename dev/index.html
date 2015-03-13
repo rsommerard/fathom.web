@@ -50,8 +50,7 @@
       'system.*',
     ],
     'destinations' : ['www.google.com']
-  };
-	  </pre>
+  };</pre>
 
 	  <p><strong>Step 2</strong> Call the <code>fathom.init</code> method passing the page manifest and a callback as arguments as shown below:</p>
 
@@ -59,8 +58,7 @@
   fathom.init(function(res) {
     if (res.error)
       throw "init failed: " + res.error;
-  }, manifest);
-	  </pre>
+  }, manifest);</pre>
 
 	  <p><strong>Step 3</strong> The Fathom extension parses and validates the manifest, and shows a security dialog (see image below) to the user asking him to allow or deny access. Your script receives the answer via the provided callback. If the user accepts the manifest, the requested methods are made available via the Fathom object.</p>
 
@@ -76,8 +74,7 @@
     if (res.error)
       throw "ping failed: " + res.error;
     console.log(res);
-  }, "www.google.com", {count : 5});
-	  </pre>
+  }, "www.google.com", {count : 5});</pre>
 
 	  <p>
 	    See the <a href="basicpingex.html">complete ping example</a> in action.
