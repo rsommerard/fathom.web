@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fathom Experiment - Network Delays</title>
+
+  <link rel="icon" type="image/png" id="favicon" href="../icons/icon-16.png"/>
+  
+  <link href="../stylesheets/pure-min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/grids-responsive-min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/fathom.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/metricsgraphics.css" type="text/css" rel="stylesheet">
+  </head>
+  
+  <body>
+    <div id="container">
+
+        <div id="main">
+	  <div class="header">
+            <h1><img src="../icons/icon-64.png">&nbsp;Fathom Experiment - Network Delays</h1>
+            <h2>Network delay visualizations</h2>
+          </div>
+	</div>
+
+	<div class="content">
+
+	  <div id="errorblock" class="test-failure"></div>
+
+	  <form class="pure-form pure-form-aligned">
+	    <fieldset>
+              <legend>Configure the test</legend>
+
+	      <div class="pure-control-group">
+		<label for="destination">Destination</label>
+		<input id="destination" type="text" placeholder="e.g. www.google.com"> or 
+                <select id="destinationlist">
+                  <option value="none" selected>- Select Measurement Server -</option>
+                  <option value="62.210.73.169">Measurement Server 1 (FR)</option>
+                  <option value="muse.inria.fr">Measurement Server 2 (FR)</option>
+                </select>
+	      </div>
+
+	      <div class="pure-control-group">
+		<label for="count">Number of Pings</label>
+		<input id="count" type="text" placeholder="default 10">
+	      </div>
+	      
+	      <div class="pure-control-group">
+		<label for="interval">Ping Interval (milliseconds)</label>
+		<input id="interval" type="text" placeholder="default 1000 ms">
+	      </div>
+
+	      <div class="pure-control-group">
+		<label for="ping" class="pure-checkbox">
+		  <input id="ping" type="checkbox" value="ping" checked>
+		  System ping (ICMP)
+		</label>
+		<label for="pingudp" class="pure-checkbox">
+		  <input id="pingudp" type="checkbox" value="pingudp">
+		  UDP ping with Fathom sockets
+		</label>
+		<label for="pingtcp" class="pure-checkbox">
+		  <input id="pingtcp" type="checkbox" value="pingtcp">
+		  TCP ping with Fathom sockets
+		</label>
+		<label for="pinghttp" class="pure-checkbox">
+		  <input id="pinghttp" type="checkbox" value="pinghttp">
+		  HTTP HEAD ping
+		</label>
+	      </div>
+
+	      <div class="pure-controls">
+		<button id="start" class="pure-button pure-button-primary">Start</button>
+	      </div>
+
+	    </fieldset>
+
+            <legend>Test results</legend>
+
+	    <div id="chart"></div>
+	    <div id="legend" class="graph-legend"></div>
+
+	  </form>
+
+	  <p>
+	    <i class="fa fa-copyright"></i><i class="small">&nbsp;2014-2015 Inria Paris-Rocquencourt, ICSI</i>
+	  </p>
+	
+	</div>
+    </div>
+    <script src="../jquery-1.11.2.min.js"></script>
+    <script src="../underscore-min.js"></script>
+    <script src="../d3.v3.min.js"></script>
+    <script src="../metricsgraphics.min.js"></script>
+    <script src="ping.js"></script>
+  </body>
+</html>
