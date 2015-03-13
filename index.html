@@ -26,71 +26,37 @@
 	</div>
 
 	<div class="content">
-	  <h2 class="content-subhead">Introduction</h2>
+
+	  <div class="pure-menu pure-menu-horizontal">
+	    <ul class="pure-menu-list">
+              <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">About Fathom</a></li>
+              <li class="pure-menu-item"><a href="users.html" class="pure-menu-link">For Users</a></li>
+<!--              <li class="pure-menu-item"><a href="exp/index.html" class="pure-menu-link">Experiments</a></li>-->
+              <li class="pure-menu-item"><a href="dev/index.html" class="pure-menu-link">For Developers</a></li>
+              <li class="pure-menu-item"><a href="api/index.html" target="_blank" class="pure-menu-link">API Docs</a></li>
+	    </ul>
+	  </div>
 	
+	  <h2 class="content-subhead">Introduction</h2>
+
 	  <p>
 	    The Fathom project explores the browser as a platform for network measurement and troubleshooting. Fathom is a joint project between <a href="https://team.inria.fr/muse/">MUSE team</a> at Inria Paris-Rocquencourt and <a href="https://www.icsi.berkeley.edu/icsi/">International Computer Science Institute (ICSI)</a> at Berkeley (CA, US). This web-site is about a re-write of Fathom on top of the Mozilla Add-on SDK, you can access <a href="http://fathom.icsi.berkeley.edu/">the original Fathom project site on the ICSI server</a>.
 	  </p>
 
-	  <h2 class="content-subhead">Download and Install Fathom</h2>
+	  <h2 class="content-subhead">Download Fathom</h2>
 	
 	  <p>
-	    Fathom is a Firefox extension so it only works on Firefox browser. A beta test version of Fathom is available <a href="fathom.xpi">here</a>. Use at your own risk :)
+	    Fathom is a Firefox extension so it only works on <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox browser</a>. A current test version of Fathom is available <a href="fathom.xpi">here</a>. Use at your own risk :)
+	  </p>
+
+	  <h2 class="content-subhead">Use Fathom</h2>
+
+	  <p>
+	    You can read more about the Fathom tools and features on the <a href="users.html">For Users</a> tab.
 	  </p>
 	  
-	  <h2 class="content-subhead">Fathom Tools</h2>
-
 	  <p>
-	    You can access several network troubleshooting and monitoring tools by clicking on the Fathom icon <img src="icons/icon-16.png" /> on the toolbar (or via the Firefox menu on Android).
-	  </p>
-
-	  <ul>
-	    <li><b><i class="fa fa-wrench"></i> Debug My Connection</b>: test your network configuration and connectivity if you are having problems with your network.</li>
-	    <li><b> <i class="fa fa-home"></i> Home Network Discovery</b>: discover devices and network connectivity in your home network.</li>
-	    <li><b><i class="fa fa-bar-chart"></i> Monitoring Graphs</b>: system and network performance over time (see next section for details on background monitoring).</li>
-	  </ul>
-	  
-	  <h2 class="content-subhead">Background Monitoring</h2>
-
-	<p>
-	  Fathom collects two types of background monitoring data:
-	  <ol>
-	    <li>Performance metrics about your system (CPU, load, memory) and network connectivity (signal quality on Wifi, cross-traffic and network delays). These metrics are recorded periodically.</li>
-	    <li>Page load performance when browsing the web (time to fetch the content and render the page).</li> 
-	  </ol>
-	  The monitoring is light-weight and should not impact your network browsing. 
-	  </p>
-	<p>
-	  You can visualize the collected performance data via the <b>Monitoring Graphs</b> tool to identify problems and to compare your current performance with the past and in different network environments (if your device connects to multiple networks). In addition, we are currently working on to use this monitoring data to improve the diagnosis of the <b>Debug My Connection</b> tool (e.g. we plan to pin-point large deviations from the baseline automatically to help to solve problems). 
-	</p>
-	<p>
-	  You can always disable background monitoring via the Fathom menu. Optionally, you can share the monitoring data with us for research purposes (see next section on our data collection policy). 
-	</p>
-
-	  <h2 class="content-subhead">Data Collection</h2>
-
-	  <p>
-	    The Fathom project is a research project and we hope to collect data on real home networks configuration, performance characteristics and typical problems as part of the work. The extension will ask you for your permission to upload the results of the various network measurements to our secure server when you first use each tool. You can change the settings at anytime via the addon preferences (go to Menu -> Addons -> Fathom).
-	  </p>
-
-	  <p>We do not collect data from third party scripts using Fathom (as explained below in 'Fathom for Developers') and the information in this section applies only to data collected by the built-in Fathom tools. However, Fathom scripts may collect and upload data from your browser -- review the security manifest carefully!
-	  </p>
-
-	  <h3>What data is collected ?</h3>
-
-	  TODO
-
-	  <h3>Privacy policy</h3>
-
-	  TODO: cnil mention ?
-
-	  <h2 class="content-subhead">Fathom for Web Developers</h2>
-	  
-	  <p>
-	    Fathom provides network performance monitoring and measurement functionality for any web page via javascript. Each page using Fathom must provide a description of the required functionality and network destinations it will communicate with. Fathom will prompt for your approval of the requested features before the page is allowed to access them.
-	  </p>
-	  <p>
-If you are interested in using Fathom on your web page, check out <a href="dev/index.html">the examples and the API documentation</a> for more info.
+	    If you are interested in using Fathom on your web page, check out the <a href="dev/index.html">For Developers</a> tab and the <a target="_blank" href="api/index.html">API Documentation</a>.
 	  </p>
 
 	  <h2 class="content-subhead">Contacts</h2>
@@ -98,9 +64,11 @@ If you are interested in using Fathom on your web page, check out <a href="dev/i
 	  <p>
 	    If you have any questions or suggestions about Fathom, do not hesitate to <a href="mailto:muse.fathom_AT_inria.fr">contact us</a>!
 	  </p>
+
 	  <p>
 	    <i class="small">&copy; 2014-2015 Inria Paris-Rocquencourt, ICSI</i>
 	  </p>
+
 	</div>
     </div>
   </body>

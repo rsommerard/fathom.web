@@ -47,21 +47,21 @@
     opacity: 0.8;
     text-align: center;
     text-transform: uppercase;
-    padding: 5px;
+    padding: 3px;
 }
 
 .splash-text {
     color: #0A0545;
     opacity: 0.8;
     text-align: center;
-    padding: 5px;
+    padding: 3px;
 }
 
 .splash-text-left {
     color: #0A0545;
     opacity: 0.8;
     text-align: left;
-    padding: 5px;
+    padding: 3px;
 }
 
 .splash-button {
@@ -107,12 +107,38 @@
 }
 
 /* Main menu */
-.pure-menu .pure-menu-heading {
+.pure-menu {
     color: #0A0545;
+    border-bottom: 1px solid #0A0545;
+    padding: 0;
+    margin: 0;
+}
+
+.pure-menu-link {
+    color: #0A0545;
+}
+
+.pure-menu-selected {
+    color: #0A0545;
+    top: 1px;
+    border: 1px solid #0A0545;
+    border-bottom: 1px solid #ffffff;
+}
+
+.pure-menu-selected a:hover {
+    background-color: #ffffff;
 }
 
 .pure-menu i {
     color: #FFB515;
+}
+
+.pure-menu-fathom {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Tool pages */
@@ -170,6 +196,7 @@ blockquote {
      padding: 2.5em 2em 0;
      border-bottom: 1px solid #eee;
  }
+
 .header h1 {
     margin: 0.2em 0;
     font-size: 3em;
@@ -187,6 +214,21 @@ blockquote {
     margin: 30px 0 10px 0;
     font-weight: 300;
     color: #888;
+}
+
+.graph-head {
+    margin: 20px 0 0 0;
+    font-size: 80%; 
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.graph-legend {
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-align: center;
 }
 
 .allow {
@@ -325,12 +367,12 @@ svg.net-graph .canvas {
 
 svg.net-graph .edge {
     stroke: #0A0545;
-    stroke-width: 2.5px;
+    stroke-width: 2.0px;
 }
 
 svg.net-graph .wifi-edge {
     stroke: #0A0545;
-    stroke-width: 2.5px;
+    stroke-width: 2.0px;
     stroke-dasharray: 3,3;
 }
 
@@ -340,9 +382,9 @@ svg.net-graph .label {
   fill: #000;
 }
 
-/* unknown */
+/* node base */
 svg.net-graph .node {
-    fill: #ffffff;
+    fill: #98abc5;
     stroke: #0A0545;
     stroke-width: 0.5px;
 }
@@ -359,22 +401,17 @@ svg.net-graph .peer-node {
 
 /* other host, rpc available */
 svg.net-graph .rpc-peer-node {
-    fill: #a05d56;
+    fill: #7b6888;
 }
 
 /* gateway */
 svg.net-graph .gw-node {
-    fill: #7b6888;
+    fill: #6b486b;
 }
 
 /* gateway, rpc */
 svg.net-graph .rpc-gw-node {
-    fill: #6b486b;
-}
-
-/* ap */
-svg.net-graph .ap-node {
-    fill: #7b6888;
+    fill: #a05d56;
 }
 
 /* internet nodes */
