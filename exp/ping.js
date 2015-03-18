@@ -32,9 +32,8 @@
 var drawemptychart = function() {
     $('#chart').empty();
     MG.data_graphic({
-	error: 'No data available',
 	chart_type: 'missing-data',
-	missing_text: 'No data available',
+	missing_text: 'Nothing here yet',
 	target: '#chart',
 	width: 0.75 * $('#chart').width(),
 	height: 0.75 * $('#chart').width()/1.61,
@@ -46,6 +45,7 @@ var drawemptychart = function() {
 };
 
 var drawdatachart = function(data, legend, count) {
+    console.log('draw',data);
     MG.data_graphic({
 	target: '#chart',
 	width: 0.75 * $('#chart').width(),
@@ -88,8 +88,10 @@ var start = function(e) {
     var dst = $('#destination').val();
     if (dst.length<=0) {
 	dst = $('#destinationlist').val();
-	if (dst === 'none')
-	    return error('No destination!');
+	if (dst === 'none') {
+	    error('No destination!');
+	    return;
+	}
     }
 
     var opt = {
@@ -110,8 +112,50 @@ var start = function(e) {
     } catch (e) {	
     }
 
-    console.log(opt);
+    // pings to compare
+    var pings = {
+	'sysping' : { enabled : $('#ping').prop('checked'),
+		      data : [],
+		      done : false,
+		      legend : "System Ping"
+		    },
+	'udpping' : { enabled : $('#pingudp').prop('checked'),
+		      data : [],
+		      done : false,
+		      legend : "Fathom UDP Ping"
+		    },
+	'tcpping' : { enabled : $('#pingtcp').prop('checked'),
+		      data : [],
+		      done : false,
+		      legend : "Fathom TCP Ping"
+		    },
+	'httpping' : { enabled : $('#pinghttp').prop('checked'),
+		       data : [],
+		       done : false,
+		       legend : "Fathom HTTP Ping"
+		     },
+	'httpreqping' : { enabled : $('#pinghttpreq').prop('checked'),
+			  data : [],
+			  done : false,
+			  legend : "Browser HTTP Ping"
+			},
+	'wsping' : { enabled : $('#pingws').prop('checked'),
+		     data : [],
+		     done : false,
+		     legend : "Browser WS Ping"
+		   }
+    };
 
+    // check the enabled
+    var enabledpings = _.filter(_.values(pings), function(v) {
+	return v.enabled;
+    });
+    if (enabledpings.length === 0) {
+	error("No protocol selected!");
+	return;
+    }
+
+    // init fathom with manifest
     var manifest = {
 	'description' : 'Fathom Experiments - Network Delay Measurements.',
 	'api' : [
@@ -128,33 +172,56 @@ var start = function(e) {
 	    return;
 	}
 
-	var data = {
-	    'sysping' : []
-	};
+	// pointers
+	var legends = _.pluck(enabledpings, 'legend');
+	var datas = _.pluck(enabledpings, 'data');
+	console.log(legends);
 
 	// init with no data
 	$('#chart').empty();
-	drawdatachart([data.sysping], ['system ping'], opt.count);
+	drawdatachart(datas, legends, opt.count);
 
-	fathom.system.doPing(function(res) {
-    	    if (res.error) {
+	// check if all measurements are done for cleanup
+	var checkall = function() {
+	    console.log('all done?',_.pluck(enabledpings, 'done'));
+	    if (_.every(_.pluck(enabledpings, 'done'))) {
+		// all done		
 		fathom.close();
-		error('System ping failed: ' + res.error.message);
-		return;
 	    }
+	};
 
-	    if (!res.done && res.result.rtt.length > 0) {
-		_.each(res.result.rtt, function(v,idx) {
-		    if (idx == data.sysping.length)
-			data.sysping.push({ count : idx+1, value : v});
-		});
+	if (pings.sysping.enabled) {
+	    console.log('sysping',dst,opt);
+	    fathom.system.doPing(function(res, done) {
+    		if (res.error) {
+		    console.error('system ping error',res.error);
+		    pings.sysping.done = true;
+		    return;
+		}
 
-		console.log(data.sysping);
+		if (!done && res.result && res.result.rtt) {
+		    // add new results
+		    var redraw = false;
+		    _.each(res.result.rtt, function(v,idx) {
+			if (idx == pings.sysping.data.length) {
+			    pings.sysping.data.push({ 
+				count : idx+1, 
+				value : v
+			    });
+			    redraw = true; // new value
+			}
+		    });
 
-		drawdatachart([data.sysping], ['system ping'], opt.count);
-	    }
+		    // update the graph
+		    if (pings.sysping.data.length > 1 && redraw)
+			drawdatachart(datas, legends, opt.count);
+		}
 
-	}, dst, opt, true);
+		pings.sysping.done = done;
+		if (done) setTimeout(checkall,0);
+	    }, dst, opt, true); // doPing
+	}
+
     }, manifest);
 };
 

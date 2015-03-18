@@ -22,7 +22,7 @@
         <div id="main">
 	  <div class="header">
             <h1><img src="../icons/icon-64.png">&nbsp;Fathom Experiment - Network Delays</h1>
-            <h2>Network delay visualizations</h2>
+            <h2>Measure and compare delays</h2>
           </div>
 	</div>
 
@@ -32,7 +32,7 @@
 
 	  <form class="pure-form pure-form-aligned">
 	    <fieldset>
-              <legend>Configure the test</legend>
+              <legend>Configure the measurements</legend>
 
 	      <div class="pure-control-group">
 		<label for="destination">Destination</label>
@@ -50,36 +50,46 @@
 	      </div>
 	      
 	      <div class="pure-control-group">
-		<label for="interval">Ping Interval (milliseconds)</label>
+		<label for="interval">Ping Interval (ms)</label>
 		<input id="interval" type="text" placeholder="default 1000 ms">
 	      </div>
 
-	      <div class="pure-control-group">
+	      <div class="pure-controls">
 		<label for="ping" class="pure-checkbox">
 		  <input id="ping" type="checkbox" value="ping" checked>
 		  System ping (ICMP)
 		</label>
 		<label for="pingudp" class="pure-checkbox">
 		  <input id="pingudp" type="checkbox" value="pingudp">
-		  UDP ping with Fathom sockets
+		  UDP ping with Fathom sockets [mserver/fathom dst only]
 		</label>
 		<label for="pingtcp" class="pure-checkbox">
 		  <input id="pingtcp" type="checkbox" value="pingtcp">
-		  TCP ping with Fathom sockets
+		  TCP ping with Fathom sockets [mserver/fathom dst only]
 		</label>
 		<label for="pinghttp" class="pure-checkbox">
 		  <input id="pinghttp" type="checkbox" value="pinghttp">
-		  HTTP HEAD ping
+		  HTTP HEAD with Fathom
+		</label>
+		<label for="pinghttpreq" class="pure-checkbox">
+		  <input id="pinghttpreq" type="checkbox" value="pinghttpreq">
+		  HTTP HEAD with Browser's XmlHTTPRequest
+		</label>
+		<label for="pingws" class="pure-checkbox">
+		  <input id="pingws" type="checkbox" value="pingws">
+		  TCP ping with Browser's WebSockets [mserver dst only]
 		</label>
 	      </div>
 
-	      <div class="pure-controls">
-		<button id="start" class="pure-button pure-button-primary">Start</button>
+	      <div class="pure-controls right">
+		<button id="start" class="pure-button pure-button-primary">
+		  Start
+		</button>
 	      </div>
 
 	    </fieldset>
 
-            <legend>Test results</legend>
+            <legend>Measurement results</legend>
 
 	    <div id="chart"></div>
 	    <div id="legend" class="graph-legend"></div>
@@ -95,7 +105,7 @@
     <script src="../jquery-1.11.2.min.js"></script>
     <script src="../underscore-min.js"></script>
     <script src="../d3.v3.min.js"></script>
-    <script src="../metricsgraphics.min.js"></script>
+    <script src="../metricsgraphics.js"></script>
     <script src="ping.js"></script>
   </body>
 </html>
