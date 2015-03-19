@@ -45,7 +45,6 @@ var drawemptychart = function() {
 };
 
 var drawdatachart = function(data, legend, count) {
-    console.log('draw',data);
     MG.data_graphic({
 	target: '#chart',
 	width: 0.75 * $('#chart').width(),
@@ -55,24 +54,19 @@ var drawdatachart = function(data, legend, count) {
 	top: 30,
 	bottom: 40,
 	interpolate : 'linear',
-	x_accessor: 'count',
+	x_accessor: 'date',
+	show_secondary_x_label : true,
 	y_accessor: 'value',
-	min_x: 0,
-	max_x: count,
-	x_label: 'Count',
-	x_scale_type: 'log',
-	show_secondary_x_label : false,
-	min_y: 0.1,
-	max_y: 10000,
-	y_autoscale: false,
-	y_scale_type: 'log',
+	y_autoscale: true,
 	y_label: 'Round-trip-time (ms)',
 	y_extended_ticks: true,
+	format: 'count',
 	area: false,
 	data: data,
 	legend : legend,
 	legend_target : '#legend',
-	transition_on_update : true
+	aggregate_rollover : false,
+	transition_on_update : false,
     });
 };
 
@@ -175,7 +169,6 @@ var start = function(e) {
 	// pointers
 	var legends = _.pluck(enabledpings, 'legend');
 	var datas = _.pluck(enabledpings, 'data');
-	console.log(legends);
 
 	// init with no data
 	$('#chart').empty();
@@ -189,6 +182,43 @@ var start = function(e) {
 		fathom.close();
 	    }
 	};
+
+	var updategraph = function() {
+	    var candraw = _.every(_.map(datas, function(d) {
+		return (d.length>=2);
+	    }));
+	    if (candraw) {
+		drawdatachart(datas, legends, opt.count);
+	    }
+	}
+
+	if (pings.httpreqping.enabled) {
+	    var idx = 1;
+	    opt.proto = 'xmlhttpreq';
+	    opt.reports = true;
+	    console.log('xmlhttpreq ping',dst,opt);
+
+	    fathom.tools.ping.start(function(res, done) {
+    		if (res.error) {
+		    console.error('xmlhttpreq ping error',res.error);
+		    pings.httpreqping.done = true;
+		    return;
+		}
+
+		if (!done && res.time) {
+		    pings.httpreqping.data.push({ 
+			count : idx, 
+			value : res.time,
+			date : new Date(parseInt(res.rr))
+		    });			
+		    idx += 1;
+		    updategraph();
+		}
+
+		pings.httpreqping.done = done;
+		if (done) setTimeout(checkall,0);
+	    }, dst, opt, true);
+	}
 
 	if (pings.sysping.enabled) {
 	    console.log('sysping',dst,opt);
@@ -206,21 +236,21 @@ var start = function(e) {
 			if (idx == pings.sysping.data.length) {
 			    pings.sysping.data.push({ 
 				count : idx+1, 
-				value : v
+				value : v,
+				date : new Date()
 			    });
 			    redraw = true; // new value
 			}
 		    });
-
-		    // update the graph
-		    if (pings.sysping.data.length > 1 && redraw)
-			drawdatachart(datas, legends, opt.count);
+		    if (redraw)
+			updategraph();
 		}
 
 		pings.sysping.done = done;
 		if (done) setTimeout(checkall,0);
 	    }, dst, opt, true); // doPing
 	}
+
 
     }, manifest);
 };

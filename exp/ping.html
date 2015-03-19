@@ -57,7 +57,7 @@
 	      <div class="pure-controls">
 		<label for="ping" class="pure-checkbox">
 		  <input id="ping" type="checkbox" value="ping" checked>
-		  System ping (ICMP)
+		  System ping (ICMP) [any dst]
 		</label>
 		<label for="pingudp" class="pure-checkbox">
 		  <input id="pingudp" type="checkbox" value="pingudp">
@@ -69,11 +69,11 @@
 		</label>
 		<label for="pinghttp" class="pure-checkbox">
 		  <input id="pinghttp" type="checkbox" value="pinghttp">
-		  HTTP HEAD with Fathom
+		  HTTP HEAD with Fathom [any web dst]
 		</label>
 		<label for="pinghttpreq" class="pure-checkbox">
 		  <input id="pinghttpreq" type="checkbox" value="pinghttpreq">
-		  HTTP HEAD with Browser's XmlHTTPRequest
+		  HTTP HEAD with Browser's XmlHTTPRequest [any web dst]
 		</label>
 		<label for="pingws" class="pure-checkbox">
 		  <input id="pingws" type="checkbox" value="pingws">
@@ -91,7 +91,7 @@
 
             <legend>Measurement results</legend>
 
-	    <div id="chart"></div>
+	    <div id="chart" class="center"></div>
 	    <div id="legend" class="graph-legend"></div>
 
 	  </form>

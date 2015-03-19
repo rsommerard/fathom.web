@@ -2685,9 +2685,10 @@
                     .key(function(d) { return d[args.x_accessor]; })
                     .entries(d3.merge(args.data));
 
-                xf = data_nested.map(function(di) {
-                    return args.scales.X(new Date(di.key));
-                });
+		xf = data_nested.map(args.scalefns.xf);
+//                xf = data_nested.map(function(di) {
+//                    return args.scales.X(new Date(di.key));
+//                });
 
                 g = svg.append('g')
                   .attr('class', 'mg-rollover-rect');
