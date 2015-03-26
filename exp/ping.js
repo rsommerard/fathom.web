@@ -161,32 +161,26 @@ var start = function(e) {
 	    return;
 	}
 
-	// pointers
-	var legends = _.pluck(enabledpings, 'legend');
 	var datas = _.pluck(enabledpings, 'data');
+
+	var getlegends = function() {
+	    return _.map(enabledpings, function(p) {
+		return p['legend'] + ' ['+p.data.length+'/'+opt.count+']'
+	    });
+	};
 
 	// init with no data
 	$('#chart').empty();
-	drawdatachart(datas, legends, opt.count);
+	drawdatachart(datas, getlegends(), opt.count);
 
 	// check if all measurements are done for cleanup
 	var checkall = function() {
-	    console.log('all done?',_.pluck(enabledpings, 'done'));
 	    if (_.every(_.pluck(enabledpings, 'done'))) {
-		// all done		
+		// all done
+		drawdatachart(datas, getlegends(), opt.count);		
 		fathom.close();
 	    }
 	};
-
-	var updategraph = function() {
-	    var candraw = _.every(_.map(enabledpings, function(d) {
-		return (d.data.length>=2 || d.done);
-	    }));
-
-	    if (candraw) {
-		drawdatachart(datas, legends, opt.count);
-	    }
-	}
 
 	if (pings.httpreqping.enabled) {
 	    var idx = 1;
@@ -208,9 +202,9 @@ var start = function(e) {
 			count : idx, 
 			value : res.time,
 			date : new Date(parseInt(res.rr))
-		    });			
+		    });
 		    idx += 1;
-		    updategraph();
+		    drawdatachart(datas, getlegends(), opt.count);
 		}
 
 		pings.httpreqping.done = done;
@@ -240,7 +234,7 @@ var start = function(e) {
 			date : new Date(parseInt(res.rr))
 		    });			
 		    idx += 1;
-		    updategraph();
+		    drawdatachart(datas, getlegends(), opt.count);
 		}
 
 		pings.httpping.done = done;
@@ -270,7 +264,7 @@ var start = function(e) {
 			date : new Date(parseInt(res.rr))
 		    });			
 		    idx += 1;
-		    updategraph();
+		    drawdatachart(datas, getlegends(), opt.count);
 		}
 
 		pings.wsping.done = done;
@@ -300,7 +294,7 @@ var start = function(e) {
 			date : new Date(parseInt(res.rr))
 		    });			
 		    idx += 1;
-		    updategraph();
+		    drawdatachart(datas, getlegends(), opt.count);
 		}
 
 		pings.udpping.done = done;
@@ -333,7 +327,7 @@ var start = function(e) {
 			}
 		    });
 		    if (redraw)
-			updategraph();
+			drawdatachart(datas, getlegends(), opt.count);
 		}
 
 		pings.sysping.done = done;
