@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+  <!-- Copyright (C) 2015 Inria Paris-Roquencourt The MIT License (MIT) -->
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,21 +63,17 @@
 		  <input id="pingudp" type="checkbox" value="pingudp">
 		  UDP ping with Fathom sockets [mserver/fathom dst only]
 		</label>
-		<label for="pingtcp" class="pure-checkbox">
-		  <input id="pingtcp" type="checkbox" value="pingtcp">
-		  TCP ping with Fathom sockets [mserver/fathom dst only]
+		<label for="pingws" class="pure-checkbox">
+		  <input id="pingws" type="checkbox" value="pingws">
+		  Ping with WebSockets [mserver dst only]
 		</label>
 		<label for="pinghttp" class="pure-checkbox">
 		  <input id="pinghttp" type="checkbox" value="pinghttp">
-		  HTTP HEAD with Fathom [any web dst]
+		  HTTP HEAD with Fathom HTTP [any web dst]
 		</label>
 		<label for="pinghttpreq" class="pure-checkbox">
 		  <input id="pinghttpreq" type="checkbox" value="pinghttpreq">
-		  HTTP HEAD with Browser's XmlHTTPRequest [any web dst]
-		</label>
-		<label for="pingws" class="pure-checkbox">
-		  <input id="pingws" type="checkbox" value="pingws">
-		  TCP ping with Browser's WebSockets [mserver dst only]
+		  HTTP HEAD with XmlHTTPRequest [any web dst]
 		</label>
 	      </div>
 

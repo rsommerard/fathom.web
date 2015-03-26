@@ -57,7 +57,7 @@ var drawdatachart = function(data, legend, count) {
 	x_accessor: 'date',
 	show_secondary_x_label : true,
 	y_accessor: 'value',
-	y_autoscale: true,
+	y_autoscale: false,
 	y_label: 'Round-trip-time (ms)',
 	y_extended_ticks: true,
 	format: 'count',
@@ -118,11 +118,11 @@ var start = function(e) {
 		      done : false,
 		      legend : "Fathom UDP Ping"
 		    },
-	'tcpping' : { enabled : $('#pingtcp').prop('checked'),
-		      data : [],
-		      done : false,
-		      legend : "Fathom TCP Ping"
-		    },
+	'wsping' : { enabled : $('#pingws').prop('checked'),
+		     data : [],
+		     done : false,
+		     legend : "WebSocket Ping"
+		   },
 	'httpping' : { enabled : $('#pinghttp').prop('checked'),
 		       data : [],
 		       done : false,
@@ -131,13 +131,8 @@ var start = function(e) {
 	'httpreqping' : { enabled : $('#pinghttpreq').prop('checked'),
 			  data : [],
 			  done : false,
-			  legend : "Browser HTTP Ping"
-			},
-	'wsping' : { enabled : $('#pingws').prop('checked'),
-		     data : [],
-		     done : false,
-		     legend : "Browser WS Ping"
-		   }
+			  legend : "HTTP Ping"
+			}
     };
 
     // check the enabled
@@ -184,9 +179,10 @@ var start = function(e) {
 	};
 
 	var updategraph = function() {
-	    var candraw = _.every(_.map(datas, function(d) {
-		return (d.length>=2);
+	    var candraw = _.every(_.map(enabledpings, function(d) {
+		return (d.data.length>=2 || d.done);
 	    }));
+
 	    if (candraw) {
 		drawdatachart(datas, legends, opt.count);
 	    }
@@ -194,14 +190,16 @@ var start = function(e) {
 
 	if (pings.httpreqping.enabled) {
 	    var idx = 1;
-	    opt.proto = 'xmlhttpreq';
-	    opt.reports = true;
-	    console.log('xmlhttpreq ping',dst,opt);
+	    var lopt = _.clone(opt);
+	    lopt.proto = 'xmlhttpreq';
+	    lopt.reports = true;
+	    console.log('xmlhttpreq ping',dst,lopt);
 
 	    fathom.tools.ping.start(function(res, done) {
     		if (res.error) {
 		    console.error('xmlhttpreq ping error',res.error);
 		    pings.httpreqping.done = true;
+		    setTimeout(checkall,0);
 		    return;
 		}
 
@@ -217,15 +215,107 @@ var start = function(e) {
 
 		pings.httpreqping.done = done;
 		if (done) setTimeout(checkall,0);
-	    }, dst, opt, true);
+	    }, dst, lopt, true);
+	}
+
+	if (pings.httpping.enabled) {
+	    var idx = 1;
+	    var lopt = _.clone(opt);
+	    lopt.proto = 'http';
+	    lopt.reports = true;
+	    console.log('http ping',dst,lopt);
+
+	    fathom.tools.ping.start(function(res, done) {
+    		if (res.error) {
+		    console.error('http ping error',res.error);
+		    pings.httpping.done = true;
+		    setTimeout(checkall,0);
+		    return;
+		}
+
+		if (!done && res.time) {
+		    pings.httpping.data.push({ 
+			count : idx, 
+			value : res.time,
+			date : new Date(parseInt(res.rr))
+		    });			
+		    idx += 1;
+		    updategraph();
+		}
+
+		pings.httpping.done = done;
+		if (done) setTimeout(checkall,0);
+	    }, dst, lopt, true);
+	}
+
+	if (pings.wsping.enabled) {
+	    var idx = 1;
+	    var lopt = _.clone(opt);
+	    lopt.proto = 'ws';
+	    lopt.reports = true;
+	    console.log('ws ping',dst,lopt);
+
+	    fathom.tools.ping.start(function(res, done) {
+    		if (res.error) {
+		    console.error('ws ping error',res.error);
+		    pings.wsping.done = true;
+		    setTimeout(checkall,0);
+		    return;
+		}
+
+		if (!done && res.time) {
+		    pings.wsping.data.push({ 
+			count : idx, 
+			value : res.time,
+			date : new Date(parseInt(res.rr))
+		    });			
+		    idx += 1;
+		    updategraph();
+		}
+
+		pings.wsping.done = done;
+		if (done) setTimeout(checkall,0);
+	    }, dst, lopt, true);
+	}
+
+	if (pings.udpping.enabled) {
+	    var idx = 1;
+	    var lopt = _.clone(opt);
+	    lopt.proto = 'udp';
+	    lopt.reports = true;
+	    console.log('udp ping',dst,lopt);
+
+	    fathom.tools.ping.start(function(res, done) {
+    		if (res.error) {
+		    console.error('udp ping error',res.error);
+		    pings.udpping.done = true;
+		    setTimeout(checkall,0);
+		    return;
+		}
+
+		if (!done && res.time) {
+		    pings.udpping.data.push({ 
+			count : idx, 
+			value : res.time,
+			date : new Date(parseInt(res.rr))
+		    });			
+		    idx += 1;
+		    updategraph();
+		}
+
+		pings.udpping.done = done;
+		if (done) setTimeout(checkall,0);
+	    }, dst, lopt, true);
 	}
 
 	if (pings.sysping.enabled) {
-	    console.log('sysping',dst,opt);
+	    var lopt = _.clone(opt);
+	    console.log('sysping',dst,lopt);
 	    fathom.system.doPing(function(res, done) {
     		if (res.error) {
 		    console.error('system ping error',res.error);
 		    pings.sysping.done = true;
+		    setTimeout(checkall,0);
 		    return;
 		}
 
@@ -248,10 +338,8 @@ var start = function(e) {
 
 		pings.sysping.done = done;
 		if (done) setTimeout(checkall,0);
-	    }, dst, opt, true); // doPing
+	    }, dst, lopt, true); // doPing
 	}
-
-
     }, manifest);
 };
 
