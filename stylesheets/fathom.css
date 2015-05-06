@@ -141,6 +141,38 @@
     display: none;
 }
 
+.pure-button {
+    background-color: #0A0545;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.pure-button-active {
+    background-color: #FFB515;
+}
+
+.pure-button i {
+    color: inherit;
+    font-size: inherit;
+}
+
+.button-xsmall {
+    font-size: 0.8em;
+}
+
+.button-small {
+    font-size: 0.9em;
+}
+
+.button-large {
+    font-size: 1.2em;
+}
+
+.button-xlarge {
+    font-size: 1.4em;
+}
+
 /* Tool pages */
 #container {
     position: relative;
@@ -167,21 +199,22 @@
 
 .small {
     font-size: 75%;
+    line-height: 1.1em;   
 }
 
 .upper {
     text-transform: uppercase;
 }
 
+.spacetop {
+    margin-top : 40px;
+    margin-bottom: 20px;
+}
+
 a, a:visited { color: #0A0545; text-decoration: underline; outline: 0; }
 p a, p a:visited { line-height: inherit; }
 
 b { color: #0A0545; }
-
-.testname {
-    font-weight: bold;
-    text-transform: uppercase;
-}
 
 blockquote {
     border-left: 2px solid #0A0545;
@@ -214,207 +247,4 @@ blockquote {
     margin: 30px 0 10px 0;
     font-weight: 300;
     color: #888;
-}
-
-.graph-head {
-    margin: 20px 0 0 0;
-    font-size: 80%; 
-    font-weight: 600;
-    color: #888;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.graph-legend {
-    font-size: 0.7rem;
-    font-weight: 400;
-    text-align: center;
-}
-
-.allow {
-    background-color: rgba(94,185,94,0.25);
-}
-.disallow {
-    background-color: rgba(221,81,76,0.25);
-}
-
-.test {
-    margin-bottom: 3px;
-    padding-left: 4px;
-    color: #777;
-}
-
-.test-not-running {
-    border-left: 4px solid grey;
-    background-color: #f0f0f0;
-}
-
-.test-running {
-    border-left: 4px solid #0A0545;
-    background-color: #f0f0f0;
-}
-
-.test-skip {
-    border-left: 4px solid grey;
-    background-color: #f0f0f0;
-}
-
-.test-success {
-    border-left: 4px solid rgb(94,185,94);
-    background-color: rgba(94,185,94,0.25);
-}
-
-.test-errors {
-    border-left: 4px solid rgb(243,123,29);
-    background-color: rgba(243,123,29,0.25);
-}
-
-.test-failure {
-    border-left: 4px solid rgb(221,81,76);
-    background-color: rgba(221,81,76,0.25);
-}
-
-/* CSS Spinner */
-
-.floatright {
-    float: right;
-}
-
-fieldset.whitelistgroup  { 
-  margin: 0; 
-  margin-bottom: 20px; 
-  padding: 5px; 
-}
-
-fieldset.whitelistgroup legend { 
-  margin: 0; 
-  padding: 0; 
-  font-weight: bold; 
-  margin-left: 20px; 
-  font-size: 100%; 
-  color: black; 
-}
-
-ul.whitelist { 
-  margin: 0; 
-  padding: 0; 
-  margin-left: 20px; 
-  list-style: none; 
-}
-
-ul.whitelist li {
-  text-align: left;
-  float: left;
-  min-width: 150px;
-  display:inline-block;
-}
-
-.spinner {
-    color: #0A0545;
-    height: 15px;
-    display: inline-block;
-    margin: 3px 3px 0 0;
-}
-
-.spinner > div {
-  background-color: #FFB515;
-  height: 100%;
-  width: 4px;
-  animation: stretchdelay 1.2s infinite ease-in-out;
-  display: inline-block;
-}
-
-.spinner .rect2 {
-  animation-delay: -1.1s;
-}
-
-.spinner .rect3 {
-  animation-delay: -1.0s;
-}
-
-.spinner .rect4 {
-  animation-delay: -0.9s;
-}
-
-.spinner .rect5 {
-  animation-delay: -0.8s;
-}
-
-@keyframes stretchdelay {
-  0%, 40%, 100% { 
-    transform: scaleY(0.4);
-  }  20% { 
-    transform: scaleY(1.0);
-  }
-}
-
-div .infofloat {
-    z-index: 10;
-    padding: 5px;
-    color: #000;
-    font: 12px sans-serif;
-    border-radius: 2px;       
-    pointer-events: none;
-    text-align: left;
-}
-
-svg.net-graph .canvas {
-    fill: none;
-    pointer-events: all;
-    stroke: #000;
-    stroke-width: 1.5px;
-}
-
-svg.net-graph .edge {
-    stroke: #0A0545;
-    stroke-width: 2.0px;
-}
-
-svg.net-graph .wifi-edge {
-    stroke: #0A0545;
-    stroke-width: 2.0px;
-    stroke-dasharray: 3,3;
-}
-
-svg.net-graph .label {
-  pointer-events: none;
-  font: 16px sans-serif; 
-  fill: #000;
-}
-
-/* node base */
-svg.net-graph .node {
-    fill: #98abc5;
-    stroke: #0A0545;
-    stroke-width: 0.5px;
-}
-
-/* localhost */
-svg.net-graph .localhost-node {
-    fill: #ff8c00;
-}
-
-/* other host */
-svg.net-graph .peer-node {
-    fill: #8a89a6;
-}
-
-/* other host, rpc available */
-svg.net-graph .rpc-peer-node {
-    fill: #7b6888;
-}
-
-/* gateway */
-svg.net-graph .gw-node {
-    fill: #6b486b;
-}
-
-/* gateway, rpc */
-svg.net-graph .rpc-gw-node {
-    fill: #a05d56;
-}
-
-/* internet nodes */
-svg.net-graph .i-node {
-    fill: #d0743c;
 }

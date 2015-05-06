@@ -39,57 +39,50 @@
 	  <h2 class="content-subhead">Fathom Tools</h2>
 
 	  <p>
-	    You can access several network troubleshooting and monitoring tools by clicking on the Fathom icon <img src="icons/icon-16.png" /> on the toolbar (or via the Firefox menu on Android).
+	    You can access several network troubleshooting and monitoring tools via the Fathom Menu <img src="icons/icon-16.png" /> at the toolbar (or via the Firefox menu on Android):
+
+	    <ul class="fa-ul">
+	      <li><b><i class="fa-li fa fa-tachometer"></i> Pageload Performance</b> displays the pageload time of the current active tab.</li>
+	      <li><b><i class="fa-li fa fa-wrench"></i> Debug My Connection</b> test your network configuration and connectivity if you are having problems with your network.</li>
+	      <li><b><i class="fa-li fa fa-home"></i> Home Network Discovery</b> discover devices and network connectivity in your home network.</li>
+	      <li><b><i class="fa-li fa fa-bar-chart"></i> Monitoring Graphs</b> explore browsing and network performance over time.</li>
+	    </ul>
 	  </p>
 
-	  <ul class="fa-ul">
-	    <li><b><i class="fa-li fa fa-wrench"></i> Debug My Connection</b>: test your network configuration and connectivity if you are having problems with your network.</li>
-	    <li><b> <i class="fa-li fa fa-home"></i> Home Network Discovery</b>: discover devices and network connectivity in your home network.</li>
-	    <li><b><i class="fa-li fa fa-bar-chart"></i> Monitoring Graphs</b>: system and network performance over time (see next section for details on background monitoring).</li>
-	  </ul>
+	  <h2 class="content-subhead">Pageload Performance Monitoring</h2>
+ 	  <p>
+ 	    Fathom monitors on the background the pageload times of the sites you visit (except in private-browsing mode). The monitoring is light-weight and does not impact your network browsing. However, you can disable the monitoring via the Fathom preferences at anytime. 
+	  </p>
+	  <p>
+	    You can check the pageload performance of current active tab in the Fathom Menu <img src="icons/icon-16.png" />.
+ 	  </p>
+ 	  <p>
+ 	    Optionally, you can contribute pageload monitoring data for our research. By default the names of the sites you visit are all anonymized. This means that we cannot know which sites you visit or if you and another Fathom user have visited the same sites. However, in order to be able to study the network performance across users and various networks, we do not anonymize the identify of a small set of popular domains whitelisted domains (such as google.com). You can visualize and edit the whitelist at the extension preferences at any time.  
+	  </p>
 	  
-	  <h2 class="content-subhead">Background Monitoring</h2>
-
-	<p>
-	  Fathom collects two types of background monitoring data:
-	  <ol>
-	    <li>Performance metrics about your system (CPU, load, memory) and network connectivity (signal quality on Wifi, cross-traffic and network delays). These metrics are recorded periodically.</li>
-	    <li>Page load performance when browsing the web (time to fetch the content and render the page).</li> 
-	  </ol>
-	  The monitoring is light-weight and should not impact your network browsing. 
+	  <h2 class="content-subhead">System Performance Monitoring</h2>
+   	  <p>
+ 	    Fathom monitors on the background the performance of your system (CPU, load, memory) and network connectivity (signal quality on Wifi, cross-traffic and network delays). The monitoring is light-weight and does not impact your network browsing. However, you can disable the monitoring via the Fathom preferences at any time.
 	  </p>
-	<p>
-	  You can visualize the collected performance data via the <b>Monitoring Graphs</b> tool to identify problems and to compare your current performance with the past and in different network environments (if your device connects to multiple networks). In addition, we are currently working on to use this monitoring data to improve the diagnosis of the <b>Debug My Connection</b> tool (e.g. we plan to pin-point large deviations from the baseline automatically to help to solve problems). 
-	</p>
-	<p>
-	  You can always disable background monitoring via the Fathom menu. Optionally, you can share the monitoring data with us for research purposes (see next section on our data collection policy). 
-	</p>
+	  <p>
+	    You can explore the performance statistics using the <b>Monitoring Graphs</b> tool.
+  	  </p>
+	  <p>
+ 	    Optionally, you can contribute pageload monitoring data for our research. The system performance monitoring data does not contain any personally identifiable information.
+	  </p>
 
 	  <h2 class="content-subhead">Data Collection</h2>
 
 	  <p>
-	    The Fathom project is a research project and we hope to collect data on real home networks configuration, performance characteristics and typical problems as part of the work. The extension will ask you for your permission to upload the results of the various network measurements to our secure server when you first use each tool. You can change the settings at anytime via the addon preferences (go to Menu -> Addons -> Fathom).
-	  </p>
-
-	  <p>We do not collect data from third party scripts using Fathom (as explained below in 'Fathom Web Pages') and the information in this section applies only to data collected by the built-in Fathom tools. However, Fathom scripts may collect and upload data from your browser -- review the security manifest carefully!
-	  </p>
-
-	  <h3>What data is collected ?</h3>
-
-	  TODO
-
-	  <h3>Privacy policy</h3>
-
-	  TODO: cnil mention ?
-
-	  <h2 class="content-subhead">Fathom Web Pages</h2>
-
-	  <p>
-	    Fathom provides network performance monitoring and measurement functionality for any web page via javascript. Each page using Fathom must provide a description of the required functionality and network destinations it will communicate with. Fathom will prompt for your approval of the requested features before the page is allowed to access them.
+	    Fathom is a research project and we use the extension to collect data for our research. However, all data collection is optional and you can use the Fathom extension and tools without sharing any data.
 	  </p>
 
 	  <p>
-	    <i class="fa fa-copyright"></i><i class="small">&nbsp;2014-2015 Inria Paris-Rocquencourt, ICSI</i>
+	    The collected data is stored on our secure servers and never shared with 3rd parties. In accordance with the French legislation you have the right .. blah balh TODO: add CNIL mention here.
+	  </p>
+
+	  <p>
+	    <i class="fa fa-copyright"></i><i class="small">&nbsp;2014-2015 Inria Paris-Rocquencourt, ICSI -- <a href="mailto:muse.fathom_AT_inria.fr">Send us Feedback</a> </i>
 	  </p>
 
 	</div>
