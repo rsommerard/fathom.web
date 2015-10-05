@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fathom for Users - Data</title>
+
+    <link rel="icon" type="image/png" id="favicon" href="icons/icon-16.png"/>
+
+    <link href="stylesheets/pure-min.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/grids-responsive-min.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/fathom.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+
+    <div id="main">
+        <div class="header">
+            <h1><img src="icons/icon-64.png">&nbsp;Fathom for Users</h1>
+            <h2>Network performance monitoring and troubleshooting with Fathom</h2>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">About Fathom</a></li>
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover pure-menu-selected">
+                    <a href="#" class="pure-menu-link">For Users</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item"><a href="users.html" class="pure-menu-link">Fathom Tools</a></li>
+                        <li class="pure-menu-item"><a href="research.html" class="pure-menu-link">Contribute Data for Research</a></li>
+                        <li class="pure-menu-item"><a href="data.html" class="pure-menu-link">Collected Data</a></li>
+                    </ul>
+                </li>
+                <li class="pure-menu-item"><a href="dev/index.html" class="pure-menu-link">For Developers</a></li>
+                <li class="pure-menu-item"><a href="api/index.html" target="_blank" class="pure-menu-link">API Docs</a></li>
+            </ul>
+        </div>
+
+        <h2 class="content-subhead">What Data is Collected by Fathom ?</h2>
+
+        <p>
+            All data collected by Fathom contains the following common information about the extension itself, the browser and
+            the current network environment to which the computer is connected:
+            <ul>
+                <li>Fathom version and random installation ID</li>
+                <li>Browser version, operating system, time-of-day and browser timezone</li>
+                <li>Default network interface configuration (name, IP, mac)</li>
+                <li>If wireless, <a href="https://en.wikipedia.org/wiki/Service_set_%28802.11_network%29">SSID</a> and <a href="https://en.wikipedia.org/wiki/Service_set_(802.11_network)">BSSID</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Default_gateway">Default gateway</a> (IP, mac)</li>
+                <li>Public <a href="https://en.wikipedia.org/wiki/IP_address">IP address</a> visible to our server</li>
+                <li>ISP, AS number and coarse geo-location based on the public IP</li>
+                <li>IP addresses of the first three IP hops</li>
+            </ul>
+        </p>
+
+        <h3 class="content-subhead">System Performance Monitoring</h3>
+
+        <ul>
+            <li>Network interface statistics (bytes and packets sent/received)</li>
+            <li>Wireless network performance (signal/noise levels, rx/tx rates)</li>
+            <li>CPU load</li>
+            <li>Memory use (available, used, free)</li>
+            <li><a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS</a> lookup measurement (random hostname)</li>
+            <li>RTT (<a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">ping</a>) measurement to localhost, network gateway (1st hop), 2nd and 3rd IP hops, and a measurement server</li>
+            <li><a href="https://en.wikipedia.org/wiki/Traceroute">Traceroute</a> to a measurement server</li>
+        </ul>
+
+        <!--
+        <div class="center spacetop">
+            <a class="pure-button" href="https://muse.inria.fr/fathomapi/findone?c=baseline">
+                <i class="fa fa-code"></i> See Example
+            </a>
+        </div>
+        -->
+
+        <h3 class="content-subhead">Pageload Performance Monitoring</h3>
+
+        <ul>
+            <li>Accessed page's hostname, IP (in clear if whitelisted else anonymized)</li>
+            <li>Protocol (http or https)</li>
+            <li><a href="http://www.w3.org/TR/navigation-timing/">HTML Navigation Timing</a>: reports main document network performance timings (DNS request, connection setup, time-to-first-byte, pageload, etc.)</li>
+            <li><a href="http://www.w3.org/TR/performance-timeline/">HTML5 Performance Timeline</a>: reports the network performance timings for objects included in the main page.</li>
+        </ul>
+
+        <h3 class="content-subhead">Debug my Connection</h3>
+
+        <ul>
+            <li>Network interface(s) configuration</li>
+            <li>Routing table</li>
+            <li>DNS configuration</li>
+            <li><a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS</a> lookup measurement (www.google.com)</li>
+            <li>Reachability test (with <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">ping</a>) to the default gateway, www.google.com and a measurement server</li>
+            <li>HTTP GET request to www.google.com and a measurement server</li>
+        </ul>
+
+        <h3 class="content-subhead">Home Network Discovery</h3>
+
+        <ul>
+            <li>Network interface(s) configuration</li>
+            <li>Default gateway (routing table)</li>
+            <li>Devices recently active in the network (<a href="https://en.wikipedia.org/wiki/Address_Resolution_Protocol">ARP</a> table)</li>
+            <li>Neighboring <a href="https://en.wikipedia.org/wiki/Universal_Plug_and_Play">UPnP</a> devices (via UPnP discovery)</li>
+            <li>Neighboring <a href="https://en.wikipedia.org/wiki/Multicast_DNS">mDNS</a> devices (via mDNS discovery)</li>
+        </ul>
+
+        <p>
+           <i class="fa fa-copyright"></i><i class="small">&nbsp;2014-2015 Inria Paris-Rocquencourt, ICSI -- <a href="mailto:muse.fathom_AT_inria.fr">Send us Feedback</a> </i>
+        </p>
+    </div>
+</div>
+</body>
+</html>

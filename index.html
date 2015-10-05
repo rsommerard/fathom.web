@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html>  
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Fathom v2.0</title>
+    <title>Fathom</title>
 
-  <link rel="icon" type="image/png" id="favicon" href="icons/icon-16.png"/>
-  
-  <link href="stylesheets/pure-min.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/grids-responsive-min.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/font-awesome.min.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/fathom.css" type="text/css" rel="stylesheet">
-  </head>
-  
-  <body>
+    <link rel="icon" type="image/png" id="favicon" href="icons/icon-16.png"/>
+
+    <link href="stylesheets/pure-min.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/grids-responsive-min.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/fathom.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
     <div id="container">
-
         <div id="main">
-	  <div class="header">
-            <h1><img src="icons/icon-64.png">&nbsp;Fathom v2.0</h1>
-            <h2>Browser-based Network Measurement Platform</h2>
-          </div>
-	</div>
+             <div class="header">
+                <h1><img src="icons/icon-64.png">&nbsp;Fathom</h1>
+                <h2>Browser-based Network Measurement Platform</h2>
+            </div>
+        </div>
 
-	<div class="content">
+        <div class="content">
 
-	  <div class="pure-menu pure-menu-horizontal">
-	    <ul class="pure-menu-list">
-              <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">About Fathom</a></li>
-              <li class="pure-menu-item"><a href="users.html" class="pure-menu-link">For Users</a></li>
-<!--              <li class="pure-menu-item"><a href="exp/index.html" class="pure-menu-link">Experiments</a></li>-->
-              <li class="pure-menu-item"><a href="dev/index.html" class="pure-menu-link">For Developers</a></li>
-              <li class="pure-menu-item"><a href="api/index.html" target="_blank" class="pure-menu-link">API Docs</a></li>
-	    </ul>
-	  </div>
-	  <p>
-	    Fathom is a <b>Firefox extension</b> that allows you to monitor and troubleshoot network performance problems. Fathom is developed by <a href="https://team.inria.fr/muse/">MUSE team at Inria Paris-Rocquencourt</a> and <a href="https://www.icsi.berkeley.edu/icsi/">International Computer Science Institute (ICSI) at Berkeley (CA, US)</a> as a part of our research that studies user experience and performance of home networks and internet applications. 
-	</p>
-	<p>
-	    What can you do with Fathom ?
+        <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">About Fathom</a></li>
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                    <a href="#" id="usermenu" class="pure-menu-link">For Users</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item"><a href="users.html" class="pure-menu-link">Fathom Tools</a></li>
+                        <li class="pure-menu-item"><a href="research.html" class="pure-menu-link">Contribute Data for Research</a></li>
+                        <li class="pure-menu-item"><a href="data.html" class="pure-menu-link">Collected Data</a></li>
+                    </ul>
+                </li>
+                <!--              <li class="pure-menu-item"><a href="exp/index.html" class="pure-menu-link">Experiments</a></li>-->
+                <li class="pure-menu-item"><a href="dev/index.html" class="pure-menu-link">For Developers</a></li>
+                <li class="pure-menu-item"><a href="api/index.html" target="_blank" class="pure-menu-link">API Docs</a></li>
+            </ul>
+        </div>
 
-	    <ul>
-	      <li><a href="users.html"><b>Users</b></a>: Fathom has a number of built-in tools for network monitoring and troubleshooting.</li>
-	      <li><a href="dev/index.html"><b>Developers</b></a>: Fathom provides a javascript API that you can use on your own web pages for network performance measurements.</li>
-	    </ul>
-	  </p>
+        <div>
+            <p>
+               Fathom is a <b>Firefox extension</b> that allows you to monitor and troubleshoot network performance problems.
+            </p>
 
-	  <div class="center spacetop">
-	    <a class="pure-button" href="fathom.xpi">
-              <i class="fa fa-download"></i> Install Fathom
-            </a>
-            <br/>
-	  </div>
-	  <div class="center spacetop">
-		    <i>Before installing, make sure you are running <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">the latest Firefox browser</a> from Mozilla! All platforms except Firefox for Android (coming soon) are supported.</i>
-	  </div>
+            <p>
+                Whose behind Fathom ?
+                <ul>
+                    <li><a href="https://team.inria.fr/muse/">MUSE team at Inria Paris-Rocquencourt</a></li>
+                    <li><a href="https://www.icsi.berkeley.edu/icsi/">International Computer Science Institute (ICSI) at Berkeley (CA, US)</a></li>
+                </ul>
+            </p>
 
-	  <p>
-	    <i class="fa fa-copyright"></i><i class="small">&nbsp;2014-2015 Inria Paris-Rocquencourt, ICSI -- <a href="mailto:muse.fathom_AT_inria.fr">Send us Feedback</a> </i>
-	  </p>
+            <p>
+               Why should you install Fathom ?
+               <ul>
+                 <li><a href="users.html"><b>Users</b></a>: Fathom has a number of built-in tools for network monitoring and troubleshooting.</li>
+                 <li><a href="dev/index.html"><b>Developers</b></a>: Fathom provides a javascript API that you can use on your own web pages for network performance measurements.</li>
+             </ul>
+            </p>
 
-	</div>
+            <div class="center spacetop">
+               <a class="pure-button" href="fathom.xpi">
+                  <i class="fa fa-download"></i> Install Fathom
+              </a>
+              <br/>
+            </div>
+
+            <div class="center spacetop">
+              <i>Before installing, make sure you are running <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">the latest Firefox browser</a> from Mozilla! All platforms except Firefox for Android (coming soon) are supported.</i>
+            </div>
+
+            <p>
+               <i class="fa fa-copyright"></i><i class="small">&nbsp;2014-2015 Inria Paris-Rocquencourt, ICSI -- <a href="mailto:muse.fathom_AT_inria.fr">Send us Feedback</a> </i>
+            </p>
+        </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
