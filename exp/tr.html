@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<!-- Copyright (C) 2015 Inria Paris-Roquencourt The MIT License (MIT) -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fathom Experiment - Geo-Traceroute</title>
+
+  <link rel="icon" type="image/png" id="favicon" href="../icons/icon-16.png"/>
+  
+  <link href="../stylesheets/pure-min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/grids-responsive-min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/leaflet.css" type="text/css" rel="stylesheet">
+  <link href="../stylesheets/fathom.css" type="text/css" rel="stylesheet">
+</head>
+  
+<body>
+<div id="container">
+    <div id="main">
+        <div class="header">
+            <h1><img src="../icons/icon-64.png">&nbsp;Fathom Experiment - Geo-Traceroute</h1>
+            <h2>Visualize network paths on a map</h2>
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="errorblock" class="test-failure"></div>
+
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+            <legend>Configure the measurement</legend>
+
+            <div class="pure-control-group">
+                <label for="destination">Destination</label>
+                <input id="destination" type="text" placeholder="e.g. www.google.com"> or 
+                <select id="destinationlist">
+                    <option value="none" selected>- Select Measurement Server -</option>
+                    <option value="62.210.73.169">Measurement Server 1 (FR)</option>
+                </select>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="count">Number of Packets per Hop</label>
+                <input id="count" type="text" placeholder="default 3">
+            </div>
+              
+            <div class="pure-control-group">
+                <label for="timeout">Packet Timeout</label>
+                <input id="timeout" type="text" placeholder="default 5 seconds">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="maxttl">Max Hops</label>
+                <input id="maxttl" type="text" placeholder="default 30 hops">
+            </div>
+
+            <div class="pure-controls right">
+              <button id="start" class="pure-button pure-button-primary">
+              Start
+              </button>
+            </div>
+
+            </fieldset>
+
+        </form>
+
+        <div id="mapcontainer">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+          <div id="map"></div>
+        </div>
+
+        <!-- footer -->
+        <p><i class="fa fa-copyright"></i><i class="small">&nbsp;2014-2015 Inria Paris-Rocquencourt, ICSI</i></p>
+
+    </div> <!-- content -->
+</div> <!-- container -->
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/underscore-min.js"></script>
+<script src="../js/leaflet.js"></script>
+<script src="tr.js"></script>
+</body>
+</html>

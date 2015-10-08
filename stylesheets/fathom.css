@@ -261,3 +261,26 @@ blockquote {
     font-weight: 300;
     color: #888;
 }
+
+#installnote {
+    margin-top: 30px;
+    font-weight: 400;
+    padding: 5px;
+}
+
+#mapcontainer {
+    position: relative;
+}
+
+#map {
+    height: 400px;
+}
+
+.fa-spinner {
+    opacity: 0.5;
+    color: #0A0545;
+    z-index: 100;
+    position: absolute;
+    top: 100px;
+    left: 400px;
+}

@@ -37,7 +37,8 @@
                     </ul>
                 </li>
                 <li class="pure-menu-item"><a href="dev/index.html" class="pure-menu-link">For Developers</a></li>
-                <li class="pure-menu-item"><a href="api/index.html" target="_blank" class="pure-menu-link">API Docs</a></li>
+                <li class="pure-menu-item"><a href="exp/index.html" class="pure-menu-link">Experiments</a></li>
+                <li class="pure-menu-item"><a href="api/index.html" class="pure-menu-link">API Docs</a></li>
             </ul>
         </div>
 
@@ -83,8 +84,18 @@
         <ul>
             <li>Accessed page's hostname, IP (in clear if whitelisted else anonymized)</li>
             <li>Protocol (http or https)</li>
-            <li><a href="http://www.w3.org/TR/navigation-timing/">HTML Navigation Timing</a>: reports main document network performance timings (DNS request, connection setup, time-to-first-byte, pageload, etc.)</li>
-            <li><a href="http://www.w3.org/TR/performance-timeline/">HTML5 Performance Timeline</a>: reports the network performance timings for objects included in the main page.</li>
+            <li>
+                <a href="http://www.w3.org/TR/navigation-timing/">HTML Navigation Timing</a>: reports main 
+                document network performance timings (DNS request, connection setup, time-to-first-byte, pageload, etc.)
+            </li>
+            <li>
+                <a href="http://www.w3.org/TR/performance-timeline/">HTML5 Performance Timeline</a>: 
+                reports the network performance timings for objects included in the main page.</li>
+            <li>
+                If the hostname is whitelisted, we perform occasionally RTT 
+                (<a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">ping</a>) and 
+                <a href="https://en.wikipedia.org/wiki/Traceroute">traceroute</a> measurements to the host.
+            </li>
         </ul>
 
         <h3 class="content-subhead">Debug my Connection</h3>
